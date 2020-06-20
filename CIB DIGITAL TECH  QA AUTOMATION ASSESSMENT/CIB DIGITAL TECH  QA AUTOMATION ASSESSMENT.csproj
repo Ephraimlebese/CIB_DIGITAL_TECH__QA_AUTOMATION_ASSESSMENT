@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT</RootNamespace>
+  </PropertyGroup>
+
+</Project>
