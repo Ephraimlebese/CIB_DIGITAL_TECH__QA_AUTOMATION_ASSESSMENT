@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -61,6 +62,31 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.Utilities
                 SelectElement selectElement = new SelectElement(element);
                 selectElement.SelectByText(value);
             }
+        }
+        //public static string TakeScreenshot(IWebDriver driver, string ScreenshotName)
+        //{
+        //    string screenshotPath = Path.Combine(path + @"\" + ScreenshotName);
+        //    ITakesScreenshot ssdriver = driver as ITakesScreenshot;
+        //    Screenshot screenshot = ssdriver.GetScreenshot();
+        //    screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Png);
+        //    return screenshotPath;
+        //}
+        public static bool IsDisplayed(this IWebElement element)
+        {
+
+            bool result;
+            try
+            {
+
+                result = element.Displayed;
+                logMe(element);
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                logMe(element, ex);
+            }
+            return result;
         }
     }
 }

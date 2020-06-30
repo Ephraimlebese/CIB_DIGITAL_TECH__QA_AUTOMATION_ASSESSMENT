@@ -23,8 +23,25 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.WebAutomation.TestExecution
                                            string cell)
         {
             UserTablePageObjects userTablePageObjects = new UserTablePageObjects();
-            AddUserPageObjects addUserPageObjects = userTablePageObjects.ClickAddUsers("");
+            AddUserPageObjects addUserPageObjects = userTablePageObjects.ClickAddUsers();
             addUserPageObjects.AddUser(name, lastName, username, password, company, role, email,cell);
+        }
+
+        [Test]
+        public void ExecuteAddUserReadFroXcelTestCase()
+        {
+            string name = ExcelLib.ReadData(1, "Name");
+            string lastName = ExcelLib.ReadData(1, "LastName");
+            string username = ExcelLib.ReadData(1, "UserName");
+            string password = ExcelLib.ReadData(1, "Password");
+            string company = ExcelLib.ReadData(1, "Company");
+            string role = ExcelLib.ReadData(1, "Role");
+            string email = ExcelLib.ReadData(1, "Email");
+            string cell = ExcelLib.ReadData(1, "Cell");
+
+            UserTablePageObjects userTablePageObjects = new UserTablePageObjects();
+            AddUserPageObjects addUserPageObjects = userTablePageObjects.ClickAddUsers();
+            addUserPageObjects.AddUser(name, lastName, username, password, company, role, email, cell);
         }
     }
 }

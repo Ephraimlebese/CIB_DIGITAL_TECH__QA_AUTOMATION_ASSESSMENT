@@ -16,17 +16,20 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.WebAutomation.PageObjects
         }
 
         public IWebElement btnAddUsers => SeleniumWebDriver.driver.FindElement(By.XPath("//button[text()=' Add User']"));
+        public IWebElement smartTable => SeleniumWebDriver.driver.FindElement(By.XPath("//table[@table-title='Smart Table example']"));
 
-        public void validateUserPage(string expectedUrl)
+        public void validateUserPage()
         {
-            string url = SeleniumWebDriver.driver.Url;
-            Assert.AreEqual(expectedUrl,url);
+            bool userTable = smartTable.IsDisplayed();
+            Assert.IsTrue(userTable);
         }
-        public AddUserPageObjects ClickAddUsers(string url)
+        
+        public AddUserPageObjects ClickAddUsers()
         {
-            validateUserPage(url);
+            validateUserPage();
             btnAddUsers.WaitAndClick();
             return new AddUserPageObjects();
         }
+
     }
 }

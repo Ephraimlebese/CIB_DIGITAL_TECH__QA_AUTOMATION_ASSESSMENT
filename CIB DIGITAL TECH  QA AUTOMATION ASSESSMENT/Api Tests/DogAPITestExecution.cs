@@ -1,4 +1,5 @@
 ﻿using CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.Utilities;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,10 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.Api_Tests
 {
     class DogAPITestExecution 
     {
-        [SetUp]
-        public void OneTimeSetup()
-        {
-
-        }
-
-        [TestCase("https://dog.ceo/api/breeds/list/all")]
-        public void ExecuteGetAllDogBreads(string url)
+        [TestCase("https://dog.ceo/api/breeds/list/all" , TestName = "A list of all dog breeds.")]
+        [TestCase("https://dog.ceo/api/breed/retriever/list", TestName = "A list of sub-breeds for “retriever”")]
+        [TestCase("https://dog.ceo/api/breed/retriever/images/random", TestName = "A random image / link for the sub-breed “golden”")]
+        public void ExecuteApiRequest(string url)
         {
             HttpClientHelper httpClientHelper = new HttpClientHelper();
 
@@ -27,8 +24,7 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.Api_Tests
             string response = string.Empty;
 
             response = httpClientHelper.makeRequest();
-
-            Console.WriteLine(response);
+            Console.WriteLine(JToken.Parse(response).ToString());
         }
     }
 }

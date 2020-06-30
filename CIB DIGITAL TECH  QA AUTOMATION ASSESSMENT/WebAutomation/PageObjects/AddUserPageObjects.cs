@@ -17,12 +17,12 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.WebAutomation.PageObjects
         public IWebElement txtFirstName => SeleniumWebDriver.driver.FindElement(By.Name("FirstName"));
         public IWebElement txtLastName => SeleniumWebDriver.driver.FindElement(By.Name("LastName"));
         public IWebElement txtUserName => SeleniumWebDriver.driver.FindElement(By.Name("UserName"));
-        public IWebElement txtPassword => SeleniumWebDriver.driver.FindElement(By.Name("password"));
+        public IWebElement txtPassword => SeleniumWebDriver.driver.FindElement(By.Name("Password"));
         public IWebElement rdbComapnyBBB(string company) => SeleniumWebDriver.driver.FindElement(By.XPath("//label[text()='"+company+"']"));
         public IWebElement ddlRole => SeleniumWebDriver.driver.FindElement(By.Name("RoleId"));
         public IWebElement txtEmail => SeleniumWebDriver.driver.FindElement(By.Name("Email"));
         public IWebElement txtCellPhone => SeleniumWebDriver.driver.FindElement(By.Name("Mobilephone"));
-        public IWebElement btnSave => SeleniumWebDriver.driver.FindElement(By.Name("//button[text()='Save']"));
+        public IWebElement btnSave => SeleniumWebDriver.driver.FindElement(By.XPath("//button[text()='Save']"));
 
         public void AddUser(string name, 
                             string lastaName, 
