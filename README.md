@@ -3,6 +3,8 @@
 Clone/Download the project to your local machine.
 Open the Project by Clicking the:![2020-06-30_22h57_31](https://user-images.githubusercontent.com/10808461/86178997-bbfa0780-bb29-11ea-9b4b-e35a38384470.png)
 
+Please note: Make sure you have microsoft visual studio installed. Open the Test Explorer.
+
 Open the Test Explorer.
 
 ![2020-06-30_23h02_10](https://user-images.githubusercontent.com/10808461/86176781-c4504380-bb25-11ea-93f0-dee5131def86.png)
