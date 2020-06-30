@@ -6,12 +6,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 
 namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.Utilities
 {
     public static class SeleniumExtensionMethods
     {
         static int globalWait = 60;
+        static string projectPath = System.Reflection.Assembly.GetCallingAssembly().Location;
+        static string path = Path.GetFullPath(projectPath + @"..\..\..\..\..\..\TestEvidance");
         //Writes out to the console either stack trace or general logging information
         public static void logMe(this IWebElement element, Exception ex = null)
         {
@@ -63,14 +66,14 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.Utilities
                 selectElement.SelectByText(value);
             }
         }
-        //public static string TakeScreenshot(IWebDriver driver, string ScreenshotName)
-        //{
-        //    string screenshotPath = Path.Combine(path + @"\" + ScreenshotName);
-        //    ITakesScreenshot ssdriver = driver as ITakesScreenshot;
-        //    Screenshot screenshot = ssdriver.GetScreenshot();
-        //    screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Png);
-        //    return screenshotPath;
-        //}
+        public static string TakeScreenshot(string ScreenshotName)
+        {
+            string screenshotPath = Path.Combine(path + @"\" + ScreenshotName);
+            ITakesScreenshot ssdriver = SeleniumWebDriver.driver as ITakesScreenshot;
+            Screenshot screenshot = ssdriver.GetScreenshot();
+            screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Png);
+            return screenshotPath;
+        }
         public static bool IsDisplayed(this IWebElement element)
         {
 
@@ -87,6 +90,16 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.Utilities
                 logMe(element, ex);
             }
             return result;
+        }
+        public static bool PageContainsText(string text)
+        {
+            Thread.Sleep(3000);
+            if (!SeleniumWebDriver.driver.PageSource.Contains(text))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -24,7 +24,7 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.WebAutomation.PageObjects
         public IWebElement txtCellPhone => SeleniumWebDriver.driver.FindElement(By.Name("Mobilephone"));
         public IWebElement btnSave => SeleniumWebDriver.driver.FindElement(By.XPath("//button[text()='Save']"));
 
-        public void AddUser(string name, 
+        public UserTablePageObjects AddUser(string name, 
                             string lastaName, 
                             string userName, 
                             string password, 
@@ -42,6 +42,8 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.WebAutomation.PageObjects
             txtEmail.EnterText(email);
             txtCellPhone.EnterText(cell);
             btnSave.WaitAndClick();
+
+            return new UserTablePageObjects();
         }
     }
 }

@@ -41,7 +41,7 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.WebAutomation.TestExecution
 
             UserTablePageObjects userTablePageObjects = new UserTablePageObjects();
             AddUserPageObjects addUserPageObjects = userTablePageObjects.ClickAddUsers();
-            addUserPageObjects.AddUser(name, lastName, username, password, company, role, email, cell);
+            addUserPageObjects.AddUser(name, lastName, username, password, company, role, email, cell).ConfirmUser(name);
         }
     }
 }

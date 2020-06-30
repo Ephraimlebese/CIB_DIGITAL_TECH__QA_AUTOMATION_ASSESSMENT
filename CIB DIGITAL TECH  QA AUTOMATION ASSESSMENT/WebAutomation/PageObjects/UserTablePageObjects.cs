@@ -23,7 +23,11 @@ namespace CIB_DIGITAL_TECH__QA_AUTOMATION_ASSESSMENT.WebAutomation.PageObjects
             bool userTable = smartTable.IsDisplayed();
             Assert.IsTrue(userTable);
         }
-        
+        public void ConfirmUser(string name)
+        {
+            bool user = SeleniumExtensionMethods.PageContainsText(name);
+            Assert.IsTrue(user);
+        }
         public AddUserPageObjects ClickAddUsers()
         {
             validateUserPage();
